@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    broker:
+        build: .
+        command: python3 main.py
+        volumes:
+          - .:/code
+        ports:
+          - "1883:1883"
+          - "8080:8080"
+    client_publish:
+        build: .
+        command: python3 client_publish.py
+        volumes:
+          - .:/code
+    client_subscribe:
+        build: .
+        command: python3 client_subscribe.py
+        volumes:
+          - .:/code
